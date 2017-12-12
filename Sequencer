@@ -1,4 +1,4 @@
-#include "stdafx.h"
+//#include "stdafx.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -40,6 +40,7 @@ struct Composition {
 	}
 
 	void printSequence(Composition* &comp, Sequence* &seq) {
+	    cout << string(50, '\n');
 		cout << "============================ C O M P O S I T I O N\n";
 		cout << "\tTitle: " << comp->title << " \tTempo: " << comp->tempo << " BPM\n";
 		if (comp->sequences.empty() == true) {
@@ -105,7 +106,8 @@ int main () {
 	//song->printSequence(song, first);
 
 inputCatch:
-	cout << "\n\n\t<1. Create Composition>";
+    cout << "\n\n\t-----------------------------";
+	cout << "\n\t<1. Create Composition>";
 	cout << "\n\t<2. QUIT>";
 	cout << "\n\tINPUT: ";
 	cin >> input;
@@ -113,7 +115,6 @@ inputCatch:
 	switch (input) {
 		case '1':
 			comp = new Composition(addComposition());
-			cout << string(50, '\n');
 			break;
 		case '2':
 			cout << "\n\n\tSee ya~\n\n";
@@ -128,8 +129,35 @@ inputCatch:
 	first = new Sequence(16);
 	comp->sequences.push_back(*first);
 	first->seqNum = 0;
-
-	comp->printSequence(comp, first);
+    
+    while (true) {
+    	comp->printSequence(comp, first);
+    	
+    	cout << "\n\n\t-----------------------------";
+    	cout << "\n\t<1. Add Track>";
+    	cout << "\n\t<2. Add Sequence>";
+    	cout << "\n\t<3. QUIT>";
+    	cout << "\n\tINPUT: ";
+    	cin >> input;
+    	
+    	switch(input) {
+    	    case '1':
+    	        cout << "\n\n\tRoot Note?";
+    	        cin >> input;
+    	        addTrack(first, input);
+    	        break;
+    	    case '2':
+    	        break;
+    	    case '3':
+    	        cout << "\n\n\tSee ya~\n\n";
+    			return 0;
+    			break;
+    	    default:
+    	        break;
+    	}
+    }
 
 	return 0;
 }
+
+
