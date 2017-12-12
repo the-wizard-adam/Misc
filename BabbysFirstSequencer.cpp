@@ -79,8 +79,21 @@ void addTrack(Sequence* &seq, char r) {
 	seq->tracks.push_back(seq->track);
 }
 
+Composition addComposition () {
+	string userTitle;
+	int userTempo;
+	
+	cout << "\n\n\tEnter Title: ";
+	cin >> userTitle;
+	cout << "\n\tEnter Tempo: ";
+	cin >> userTempo;
+
+	return Composition(userTitle, userTempo);
+}
+
 int main () {
 	char input;
+	Composition *comp;
 	/*Composition *song;
 	song = new Composition("Untitled", 120);
 
@@ -91,16 +104,32 @@ int main () {
 
 	//song->printSequence(song, first);
 
+inputCatch:
 	cout << "\n\n\t<1. Create Composition>";
+	cout << "\n\t<2. QUIT>";
 	cout << "\n\tINPUT: ";
 	cin >> input;
 
 	switch (input) {
-	case '1':
+		case '1':
+			comp = new Composition(addComposition());
+			cout << string(50, '\n');
+			break;
+		case '2':
+			cout << "\n\n\tSee ya~\n\n";
+			return 0;
 			break;
 		default:
+			goto inputCatch;
 			break;
 	}
+
+	Sequence *first;
+	first = new Sequence(16);
+	comp->sequences.push_back(*first);
+	first->seqNum = 0;
+
+	comp->printSequence(comp, first);
 
 	return 0;
 }
