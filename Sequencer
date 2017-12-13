@@ -161,7 +161,7 @@ inputCatch:
     	        cout << "\n\n\t-----------------------------";
             	cout << "\n\tSelect Track: ";
             	cin >> intput;
-            	for (int i = 0; i < first->tracks.size(); i++) {
+            	for (int i = 1; i < first->tracks.size(); i++) {
             	    if (i == intput) {
             	        cout << "\n\tAdd note: ";
             	        cin >> intput;
