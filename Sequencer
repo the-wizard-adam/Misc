@@ -99,6 +99,7 @@ Composition addComposition () {
 int main () {
 	char input;
 	string stinput;
+	int intput, intput2;
 	Composition *comp;
 	/*Composition *song;
 	song = new Composition("Untitled", 120);
@@ -139,9 +140,9 @@ inputCatch:
     	comp->printSequence(comp, first);
     	
     	cout << "\n\n\t-----------------------------";
-    	cout << "\n\t<1. Add Track>\t\t<4. Select Track>";
+    	cout << "\n\t<1. Add Track>\t\t<4. QUIT>";
     	cout << "\n\t<2. Add Sequence>";
-    	cout << "\n\t<3. QUIT>";
+    	cout << "\n\t<3. Select Track>";
     	cout << "\n\tINPUT: ";
     	cin >> input;
     	
@@ -156,9 +157,34 @@ inputCatch:
     	    case '2':
     	        break;
     	    case '3':
-    	        cout << "\n\n\tSee ya~\n\n";
-    			return 0;
+    	        comp->printSequence(comp, first);
+    	        cout << "\n\n\t-----------------------------";
+            	cout << "\n\tSelect Track: ";
+            	cin >> intput;
+            	for (int i = 0; i < first->tracks.size(); i++) {
+            	    if (i == intput) {
+            	        cout << "\n\tAdd note: ";
+            	        cin >> intput;
+            	        cout << "\n\tStep: ";
+            	        cin >> intput2;
+            	        int j = 0;
+            	        for (auto note: first->track->notes) {
+            	            j++;
+            	            if (j == intput2) {
+            	                note = intput;
+            	            }
+            	            else {
+            	            }
+            	        }
+            	    }
+            	    else {
+            	    }
+            	}
     			break;
+    		case '4':
+    		    cout << "\n\n\tSee ya~\n\n";
+    			return 0;
+    		    break;
     	    default:
     	        break;
     	}
