@@ -147,9 +147,9 @@ inputCatch:
     	
     	switch(input) {
     	    case '1':
-    	        cout << "\n\n\tName Track: ";
+    	        cout << "\n\tName Track: ";
     	        cin >> stinput;
-    	        cout << "\n\n\tRoot Note? ";
+    	        cout << "\n\tRoot Note? ";
     	        cin >> input;
     	        addTrack(first, stinput, input);
     	        break;
