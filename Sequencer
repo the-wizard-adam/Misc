@@ -6,10 +6,12 @@
 using namespace std;
 
 struct Track {
+    string trackName;
 	char root;
 	vector<char> notes;
 
-	Track (char r) {
+	Track (string n, char r) {
+	    trackName = n;
 		root = r;
 	}
 };
@@ -52,8 +54,10 @@ struct Composition {
 				cout << "\t\t<no tracks>\n\n";
 			}
 			else {
+			    int i = 0;
 				for (auto track : seq->tracks) {
-					cout << "\t\t" << track->root << "||";
+				    i++;
+					cout << "\t\tTrack " << i << ": " << track->trackName << "\t" << track->root << "||";
 					for (auto note : track->notes) {
 						cout << " " << note;
 					}
@@ -72,8 +76,8 @@ void addSequence(Composition* &comp, Sequence* &prev, int l) {
 
 }
 
-void addTrack(Sequence* &seq, char r) {
-	seq->track = new Track(r);
+void addTrack(Sequence* &seq, string n, char r) {
+	seq->track = new Track(n, r);
 	for (int i = 0; i < seq->length; i++) {
 		seq->track->notes.push_back('-');
 	}
@@ -94,6 +98,7 @@ Composition addComposition () {
 
 int main () {
 	char input;
+	string stinput;
 	Composition *comp;
 	/*Composition *song;
 	song = new Composition("Untitled", 120);
@@ -134,7 +139,7 @@ inputCatch:
     	comp->printSequence(comp, first);
     	
     	cout << "\n\n\t-----------------------------";
-    	cout << "\n\t<1. Add Track>";
+    	cout << "\n\t<1. Add Track>\t\t<4. Select Track>";
     	cout << "\n\t<2. Add Sequence>";
     	cout << "\n\t<3. QUIT>";
     	cout << "\n\tINPUT: ";
@@ -142,9 +147,11 @@ inputCatch:
     	
     	switch(input) {
     	    case '1':
+    	        cout << "\n\n\tName Track: ";
+    	        cin >> stinput;
     	        cout << "\n\n\tRoot Note? ";
     	        cin >> input;
-    	        addTrack(first, input);
+    	        addTrack(first, stinput, input);
     	        break;
     	    case '2':
     	        break;
@@ -159,5 +166,6 @@ inputCatch:
 
 	return 0;
 }
+
 
 
