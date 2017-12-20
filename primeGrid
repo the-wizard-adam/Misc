@@ -1,0 +1,41 @@
+//•
+#include <iostream>
+
+using namespace std;
+
+bool isPrime(int i) {
+    for (int j = (i-1); j > 1; j--) {
+        if (i % j == 0) {
+            return false;
+        }
+        else {
+        }
+    }
+    return true;
+}
+
+int main()
+{
+    int num;
+    cout << "Enter a number: ";
+    cin >> num;
+    
+    cout << endl;
+    for (int i = 1; i <= num; i++) {
+        if (isPrime(i) == true) {
+                cout << " | ";
+            }
+            else {
+                cout << " - ";
+    
+            }
+            if (i % 10 == 0) {
+                cout << endl;
+        }
+    }
+
+    return 0;
+}
+
+
+
